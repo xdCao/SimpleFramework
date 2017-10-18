@@ -8,6 +8,7 @@ import annotations.Service;
 import jdk.internal.dynalink.support.ClassMap;
 import utils.ClassUtil;
 
+import java.lang.annotation.Annotation;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -54,6 +55,28 @@ public final class ClassHelper {
         beanClassSet.addAll(getControllerClassSet());
         beanClassSet.addAll(getServiceClassSet());
         return beanClassSet;
+    }
+
+    //获取某父类或接口的所有子类
+    public static Set<Class<?>> getClassSetBySuper(Class<?> superClass){
+        Set<Class<?>> classSet=new HashSet<Class<?>>();
+        for (Class<?> cls:CLASS_SET){
+            if (superClass.isAssignableFrom(cls)&&!superClass.equals(cls)){
+                classSet.add(cls);
+            }
+        }
+        return classSet;
+    }
+
+    //获取带有某注解的所有类
+    public static Set<Class<?>> getClassSetByAnnotation(Class<? extends Annotation> annotation){
+        Set<Class<?>> classSet=new HashSet<Class<?>>();
+        for (Class<?> cls:CLASS_SET){
+            if (cls.isAnnotationPresent(annotation)){
+                classSet.add(cls);
+            }
+        }
+        return classSet;
     }
 
 }

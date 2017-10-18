@@ -11,7 +11,7 @@ import utils.ClassUtil;
 import java.util.HashSet;
 import java.util.Set;
 
-public class ClassHelper {
+public final class ClassHelper {
 
     //存放所加载的类
     private static final Set<Class<?>> CLASS_SET;

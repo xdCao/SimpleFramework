@@ -16,9 +16,7 @@ import java.lang.reflect.Field;
 import java.util.Collection;
 import java.util.Map;
 
-public class IOCHelper {
-
-    private static final Logger LOGGER= LoggerFactory.getLogger(IOCHelper.class);
+public final class IOCHelper {
 
     static {
         Map<Class<?>, Object> beanMap = BeanHelper.getBeanMap();

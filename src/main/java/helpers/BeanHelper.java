@@ -9,7 +9,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 
-public class BeanHelper {
+public final class BeanHelper {
 
     //存放bean类与实例的关系
     private static final Map<Class<?>,Object> BEAN_MAP=new HashMap<Class<?>,Object>();

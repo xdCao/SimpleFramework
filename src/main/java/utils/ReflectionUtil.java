@@ -25,7 +25,7 @@ public class ReflectionUtil {
         return instance;
     }
 
-    public static Object invokeMethod(Object object, Method method,Object[] args){
+    public static Object invokeMethod(Object object, Method method,Object... args){
         Object result;
         try {
             method.setAccessible(true);

@@ -8,6 +8,8 @@ import helpers.BeanHelper;
 import helpers.ClassHelper;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import tx.Transaction;
+import tx.TransactionProxy;
 
 import java.lang.annotation.Annotation;
 import java.util.*;
@@ -44,6 +46,19 @@ public final class AopHelper {
     //切面类和目标类集合之间的关系
     private static Map<Class<?>,Set<Class<?>>> createProxyMap(){
         Map<Class<?>,Set<Class<?>>> proxyMap=new HashMap<Class<?>, Set<Class<?>>>();
+        addAspectProxy(proxyMap);
+        addTransactionProxy(proxyMap);
+        return proxyMap;
+    }
+
+    private static void addTransactionProxy(Map<Class<?>, Set<Class<?>>> proxyMap) {
+
+        Set<Class<?>> serviceClassSet=ClassHelper.getServiceClassSet();
+        proxyMap.put(TransactionProxy.class,serviceClassSet);
+
+    }
+
+    private static void addAspectProxy(Map<Class<?>, Set<Class<?>>> proxyMap) {
         Set<Class<?>> proxyClassSet= ClassHelper.getClassSetBySuper(AspectProxy.class);
         for (Class<?> proxyClass:proxyClassSet){
             if (proxyClass.isAnnotationPresent(Aspect.class)){
@@ -52,7 +67,6 @@ public final class AopHelper {
                 proxyMap.put(proxyClass,targetClassSet);
             }
         }
-        return proxyMap;
     }
 
     private static Map<Class<?>,List<Proxy>> createTargetMap(Map<Class<?>,Set<Class<?>>> proxyMap) throws IllegalAccessException, InstantiationException {
@@ -73,4 +87,7 @@ public final class AopHelper {
         }
         return targetMap;
     }
+
+
+
 }

@@ -16,4 +16,6 @@ public interface ConfigConstants {
     String APP_JSP_PATH="xdCao.framework.app.JspPath";
     String APP_ASSET_PATH="xdCao.framework.app.AssetPath";
 
+    String APP_UPLOAD_LIMIT="xdCao.framework.app.uploadLimit";
+
 }

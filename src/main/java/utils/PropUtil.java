@@ -4,6 +4,7 @@ package utils;
 */
 
 import constans.ConfigConstants;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -34,10 +35,19 @@ public class PropUtil {
     }
 
     public static String getString(Properties configProps, String prefix, String defaultValue) {
-        if (null==configProps.getProperty(prefix)){
+        if (null==configProps.getProperty(prefix)|| StringUtils.isEmpty(configProps.getProperty(prefix))){
             return defaultValue;
         }else {
             return configProps.getProperty(prefix);
         }
     }
+
+    public static Integer getInt(Properties configProps,String prefix,int defaultValue){
+        if (null==configProps.getProperty(prefix)||StringUtils.isEmpty(configProps.getProperty(prefix))){
+            return defaultValue;
+        }else{
+            return Integer.parseInt(configProps.getProperty(prefix));
+        }
+    }
+
 }

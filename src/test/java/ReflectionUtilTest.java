@@ -3,10 +3,10 @@
 */
 
 import app.App;
-import helpers.BeanHelper;
-import helpers.ClassHelper;
+import Framework.helpers.BeanHelper;
+import Framework.helpers.ClassHelper;
 import org.junit.Test;
-import utils.ReflectionUtil;
+import Framework.utils.ReflectionUtil;
 
 import java.util.Iterator;
 import java.util.Set;

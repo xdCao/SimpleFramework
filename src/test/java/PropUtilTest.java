@@ -2,7 +2,7 @@
     created by xdCao on 2017/10/18
 */
 
-import helpers.ConfigHelper;
+import Framework.helpers.ConfigHelper;
 import org.junit.Test;
 
 public class PropUtilTest {
